@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:14:39 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/01 15:49:55 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:32:57 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void makeinput(char *input, std::map<std::string, double>& map)
     std::string line;
     std::string key;
     std::string value;
+    std::string date;
     std::ifstream file(input);
 
     if (!file.is_open())
@@ -51,25 +52,28 @@ void makeinput(char *input, std::map<std::string, double>& map)
         try
         {
             std::size_t Pipepos = line.find('|');
-            if (Pipepos == std::string::npos)
+            date = line.substr(0, Pipepos);
+            if (Checkinput(date) == false)
+                continue;
+            else if (Pipepos == std::string::npos)
             {
-                throw Badinput();
                 key = line.substr(0, line.find('\n'));
                 value = "0";
                 map.insert(std::pair<std::string, double>(key, atof(value.c_str())));
+                throw Badinput();
                 continue;
             }
             else
             {
                 key = line.substr(0, Pipepos);
                 value = line.substr(line.find('|') + 1, line.find('\n'));
-                // value = line.substr(Pipepos + 1, line.find('\n'));
                 map.insert(std::pair<std::string, double>(key, atof(value.c_str())));
             }
         }
         catch(Badinput &e)
         {
-            std::cout << e.what() << std::endl;
+            std::cout << e.what();
+            std::cout << key << std::endl;
         }
         catch(std::exception &e)
         {
@@ -86,4 +90,34 @@ void    printinput(std::map<std::string, double>& map)
     {
         std::cout << it->first << "|" << it->second << '\n';
     }
+}
+
+bool    Checkinput(std::string date)
+{
+    float years;
+    float months;
+    float days;
+    
+    years = std::atof(date.c_str());
+    if (date.find('-') == date.npos || years < 2000 || years > 2024)
+    {
+        throw ErrMessage("Not a valid year");
+        return false;
+    }
+    date.erase(0, date.find('-') + 1);
+    months = std::atof(date.c_str());
+    if (date.find('-') == date.npos || months < 1 || months > 12)
+    {
+        throw ErrMessage("Not a valid month");
+        return false;
+    }
+    date.erase(0, date.find('-') + 1);
+    days = std::atof(date.c_str());
+    if (date.find('-') != date.npos || days < 1 || days > 31)
+    {
+        throw ErrMessage("Not a valid day");
+        return false;
+    }
+
+    return true;
 }

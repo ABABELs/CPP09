@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:09:29 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/01 15:34:45 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:18:12 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Badinput : public std::exception
 	public:
 		virtual const char* what() const throw()
 		{
-			return ("Bad input file");
+			return ("Error: Bad input => ");
 		}
 };
 
@@ -38,7 +38,19 @@ class Notopen : public std::exception
 	public:
 		virtual const char* what() const throw()
 		{
-			return ("File not open");
+			return ("Error: could not open file.");
+		}
+};
+
+class ErrMessage : public std::exception
+{
+	private:
+		const char *_message;
+	public:
+		ErrMessage(const char *_message) : _message(_message) {}
+		virtual const char* what() const throw()
+		{
+			return _message;
 		}
 };
 
@@ -46,5 +58,7 @@ void	makemap(std::map<std::string, double>& map);
 void	printmap(std::map<std::string, double>& map);
 void	makeinput(char *input, std::map<std::string, double>& map);
 void	printinput(std::map<std::string, double>& map);
+bool	Checkinput(std::string line);
+void	Choosebefore(std::string line);
 
 #endif
