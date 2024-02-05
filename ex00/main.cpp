@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:50:40 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/01 15:38:17 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:38:58 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int main(int argc, char **argv)
         std::cout << "Usage: ./bitcoin [inputfile]" << std::endl;
         return (0);
     }
-    // std::map<std::string, double> mapcsv;
-    // makemap(mapcsv);
+    std::map<std::string, double> mapcsv;
+    makemap(mapcsv);
     // printmap(mapcsv);
-    std::map<std::string, double> mapinput;
-    makeinput(argv[1], mapinput);
-    printinput(mapinput);
+    Gotoinput(argv[1]);
     return (0);
 }
