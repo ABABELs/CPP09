@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.Class.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: babels <babels@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:09:29 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/05 14:41:27 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/05 17:29:53 by babels           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Badinput : public std::exception
 	public:
 		virtual const char* what() const throw()
 		{
-			return ("Error: this date have no value but set to 0 => ");
+			return ("Error: Bad input => ");
 		}
 };
 
@@ -56,8 +56,9 @@ class ErrMessage : public std::exception
 
 void	makemap(std::map<std::string, double>& map);
 void	printmap(std::map<std::string, double>& map);
-void	Checkinput(std::string line);
-void	Choosebefore(std::string line);
-void	Gotoinput(argv[1], std::map<std::string, double>& map);
+void	Checkdate(std::string &date);
+void	Checkvalue(std::string &value);
+void	Gotoinput(const char *filesource, std::map<std::string, double>& map);
+void	FindInBase(std::map<std::string, double>& map, std::string &date, std::string &value);
 
 #endif

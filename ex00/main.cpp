@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: babels <babels@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:50:40 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/05 14:38:58 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/05 17:25:51 by babels           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int main(int argc, char **argv)
     std::map<std::string, double> mapcsv;
     makemap(mapcsv);
     // printmap(mapcsv);
-    Gotoinput(argv[1]);
+    Gotoinput(argv[1], mapcsv);
     return (0);
 }
