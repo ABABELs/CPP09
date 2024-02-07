@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:42:01 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/07 14:06:21 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:42:15 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void    RPN(std::string str)
     
     if (Greatquantity(str) == false)
         return;
+    if (str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/' || str[0] == '%')
+    {
+        throw ErrMessage("Error: expression start with operator.");
+        return;
+    }
     while (ss)
     {
         std::string s;
@@ -31,8 +36,6 @@ void    RPN(std::string str)
         {
             if (s == "+")
             {
-                if (stack.size() < 2)
-                    throw ErrMessage("Error: not enough values in stack for operation.");
                 double a = stack.top();
                 stack.pop();
                 double b = stack.top();
@@ -41,8 +44,6 @@ void    RPN(std::string str)
             }
             else if (s == "-")
             {
-                if (stack.size() < 2)
-                    throw ErrMessage("Error: not enough values in stack for operation.");
                 double a = stack.top();
                 stack.pop();
                 double b = stack.top();
@@ -51,8 +52,6 @@ void    RPN(std::string str)
             }
             else if (s == "*")
             {
-                if (stack.size() < 2)
-                    throw ErrMessage("Error: not enough values in stack for operation.");
                 double a = stack.top();
                 stack.pop();
                 double b = stack.top();
@@ -61,18 +60,19 @@ void    RPN(std::string str)
             }
             else if (s == "/")
             {
-                if (stack.size() < 2)
-                    throw ErrMessage("Error: not enough values in stack for operation.");
                 double a = stack.top();
                 stack.pop();
                 double b = stack.top();
+                if (a == 0)
+                {
+                    throw ErrMessage("Error: division by zero.");
+                    return;
+                }
                 stack.pop();
                 stack.push(b / a);
             }
             else if (s == "%")
             {
-                if (stack.size() < 2)
-                    throw ErrMessage("Error: not enough values in stack for operation.");
                 double a = stack.top();
                 stack.pop();
                 double b = stack.top();

@@ -6,11 +6,11 @@
 #    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 12:52:33 by aabel             #+#    #+#              #
-#    Updated: 2024/02/06 12:02:20 by aabel            ###   ########.fr        #
+#    Updated: 2024/02/07 14:22:02 by aabel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = RPN
+NAME = PmergeMe
 SOURCES = main.cpp RPN.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
