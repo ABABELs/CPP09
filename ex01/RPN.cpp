@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:42:01 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/06 13:37:16 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/07 11:41:55 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    RPN(std::string str)
     {
         std::string s;
         ss >> s;
-        if (s <= "9" || s >= "0")
+        if (is_number(s) == true)
         {
             
             stack.push(atof(s.c_str()));
@@ -81,6 +81,20 @@ void    RPN(std::string str)
             else
                 throw ErrMessage("Error: invalid operation.");
         }
+        if (ss.eof() == true)
+        {
+            std::cout << stack.top() << std::endl;
+            break;
+        }
     }
-    std::cout << stack.top() << std::endl;
+}
+
+bool    is_number(const std::string& s)
+{
+    for (size_t i = 0; i < s.length(); i++)
+    {
+        if (std::isdigit(s[i]) == false && s[i] != '.')
+            return false;
+    }
+    return true;
 }

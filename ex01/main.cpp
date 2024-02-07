@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:37:32 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/06 12:07:38 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/07 11:27:19 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int main(int argc, char **argv)
         std::cerr << "Error: too many arguments." << std::endl;
         return 1;
     }
-    RPN(argv[1]);
+    try
+    {
+         RPN(argv[1]);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     return 0;
 }

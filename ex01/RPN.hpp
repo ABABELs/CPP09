@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:36:36 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/06 11:41:49 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/07 11:37:34 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <iomanip>
 #include <cmath>
 #include <exception>
+#include <cctype>
 
 class ErrMessage : public std::exception
 {
@@ -36,5 +37,6 @@ class ErrMessage : public std::exception
 };
 
 void RPN(std::string str);
+bool is_number(const std::string& s);
 
 #endif
