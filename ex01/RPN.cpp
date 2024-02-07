@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 11:42:01 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/07 11:41:55 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:06:21 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void    RPN(std::string str)
     std::stack<double> stack;
     std::stringstream ss(str);
     
+    if (Greatquantity(str) == false)
+        return;
     while (ss)
     {
         std::string s;
         ss >> s;
         if (is_number(s) == true)
         {
-            
             stack.push(atof(s.c_str()));
         }
         else
@@ -91,10 +92,36 @@ void    RPN(std::string str)
 
 bool    is_number(const std::string& s)
 {
-    for (size_t i = 0; i < s.length(); i++)
+    
+    if (atoi(s.c_str()) > 10 || atoi(s.c_str()) < 0)
     {
-        if (std::isdigit(s[i]) == false && s[i] != '.')
-            return false;
+        return false;
+    }
+    else if (std::isdigit(s[0]) == false && s[0] != '.')
+    {
+        return false;
+    }
+    return true;
+}
+
+bool    Greatquantity(const std::string& str)
+{
+    std::stringstream ss(str);
+    int i = 0;
+    int j = 0;
+    while (ss)
+    {
+        std::string s;
+        ss >> s;
+        if (is_number(s) == true)
+            i++;
+        else if (s == "+" || s == "-" || s == "*" || s == "/" || s == "%")
+            j++;
+    }
+    if (i - j != 1)
+    {
+        throw ErrMessage("Error: invalid expression.");
+        return false;
     }
     return true;
 }
