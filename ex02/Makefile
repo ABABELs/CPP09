@@ -6,12 +6,12 @@
 #    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 12:52:33 by aabel             #+#    #+#              #
-#    Updated: 2024/02/07 14:22:02 by aabel            ###   ########.fr        #
+#    Updated: 2024/02/08 12:40:39 by aabel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
-SOURCES = main.cpp RPN.cpp \
+SOURCES = main.cpp PmergeMe.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
