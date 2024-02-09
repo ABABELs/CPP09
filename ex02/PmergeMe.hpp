@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:04:01 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/08 13:46:56 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/09 11:09:20 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class ErrMessage : public std::exception
 
 void PmergeMevector(char **argv);
 void PrintVector(std::vector<unsigned int> vec);
-
+void Mergesort(std::vector<unsigned int> &vec);
 
 void PmergeMedeque(char *str);
 
