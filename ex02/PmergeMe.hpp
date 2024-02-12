@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: babels <babels@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:04:01 by aabel             #+#    #+#             */
-/*   Updated: 2024/02/09 11:09:20 by aabel            ###   ########.fr       */
+/*   Updated: 2024/02/12 15:49:47 by babels           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 #include <deque>
 #include <algorithm>
 
-
-
 class ErrMessage : public std::exception
 {
     private:
@@ -42,10 +40,17 @@ class ErrMessage : public std::exception
         }
 };
 
-void PmergeMevector(char **argv);
-void PrintVector(std::vector<unsigned int> vec);
-void Mergesort(std::vector<unsigned int> &vec);
+bool	isnumbers(std::string numbers);
+void	printargv(char **argv);
+void	checknumbers(char **argv);
+void	sortmycontainers(int argc, char **argv);
 
-void PmergeMedeque(char *str);
+void	printvec(std::vector<unsigned int> vec);
+void    sortvec(std::vector<unsigned int> &vec);
+size_t	binarySearchVector(std::vector<unsigned int> res, unsigned int nb);
+
+void	sortdeque(std::deque<unsigned int> &deq);
+size_t	binarySearchDeque(std::deque<unsigned int> res, unsigned int nb);
+void	printdeq(std::deque<unsigned int> deq);
 
 #endif
